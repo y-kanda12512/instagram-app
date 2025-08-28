@@ -24,9 +24,9 @@ group :development, :test do
 end
 
 group :development do
-  gem "web-console"  
+  gem "web-console"
   gem "ruby-lsp"
-  gem "syntax_tree" 
+  gem "syntax_tree"
 end
 
 group :test do
