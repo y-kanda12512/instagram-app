@@ -16,6 +16,7 @@ gem "propshaft"
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
+gem "cssbundling-rails"
 
 # --- View / API ---
 gem "jbuilder"
