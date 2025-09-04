@@ -31,6 +31,9 @@ gem "bootsnap", require: false
 gem "kamal", require: false
 gem "thruster", require: false
 
+# --- ファイルのコメント ---
+# gem 'annotate'
+
 group :development, :test do
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"
 end
@@ -44,6 +47,7 @@ group :development do
   gem "syntax_tree"
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
+  gem "foreman"
 end
 
 group :test do
