@@ -1,0 +1,33 @@
+.flash {
+  padding: 10px;
+  position: fixed;
+  top: 15px;
+  right: 0;
+  background: #fff;
+  animation: flash-slide 3s forwards;
+  border: 1px solid #000;
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+@keyframes flash-slide {
+  0% {
+    transform: translateX(100%); /* 画面外の右 */
+    opacity: 0;
+  }
+
+  10% {
+    transform: translateX(-5%); /* 画面内にスライドイン */
+    opacity: 1;
+  }
+
+  90% {
+    transform: translateX(-5%); /* 表示されたままキープ */
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(100%); /* 画面外に戻る */
+    opacity: 0;
+  }
+}

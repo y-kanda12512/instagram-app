@@ -1,0 +1,190 @@
+.posts {
+}
+
+.posts__head {
+}
+
+.posts__new-link {
+  width: fit-content;
+  height: fit-content;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.posts__body {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  margin-top: 42px;
+}
+
+.post {
+}
+
+.post__head {
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.post__profile-image {
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.post__account-info {
+}
+
+.post__account-name {
+  display: block;
+  font-size: 14px;
+}
+
+.post__account-time {
+  display: block;
+  color: #9e9e9e;
+  font-size: 12px;
+}
+
+.post__body {
+  display: flex;
+  flex-direction: column;
+  margin-top: 11px;
+  gap: 12px;
+}
+
+.post__images {
+  display: grid;
+  grid-template-columns: 0.59fr 0.41fr;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 7px;
+}
+
+.post__image {
+  &:nth-child(1) {
+    grid-area: 1 / 1 / 3 / 2;
+  }
+
+  &:nth-child(2) {
+    grid-area: 1 / 2 / 2 / 3;
+  }
+
+  &:nth-child(3) {
+    grid-area: 2 / 2 / 3 / 3;
+  }
+}
+
+.post__content {
+}
+
+.post__tabs {
+  display: flex;
+  gap: 14px;
+}
+
+.post__tab {
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.post__heart {
+}
+
+.post__info {
+  margin-top: 8px;
+}
+
+.post__description,
+.post__date {
+  font-size: 12px;
+}
+
+.add-post {
+}
+
+.add-post__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.add-post__title {
+  font-size: 16px;
+}
+
+.add-post__head-link {
+  font-size: 16px;
+  color: #2f80ed;
+}
+
+.post-link-inactive {
+  color: #bdbdbd;
+  cursor: none;
+  pointer-events: none;
+}
+
+.add-post__content {
+  margin-top: 47px;
+}
+
+.add-post__profile {
+}
+
+.add-post__profile {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.add-post__profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.add-post__form {
+  margin-top: 37px;
+}
+
+.post-form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.post-form__input {
+  border-bottom: 1px solid #9e9e9e;
+  font-size: 16px;
+  padding-bottom: 8px;
+  caret-color: #2f80ed;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: #bdbdbd;
+  }
+}
+
+.post-form__file-label {
+  width: fit-content;
+  border: 1px solid #e0e0e0;
+  padding: 1px 8px 3px 10px;
+  font-size: 12px;
+}
+
+.post-form__file {
+  display: none;
+}
+
+.post-form__submit {
+  display: none;
+}
