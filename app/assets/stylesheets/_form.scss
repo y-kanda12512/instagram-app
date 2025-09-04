@@ -1,0 +1,48 @@
+.login-top-img {
+  margin-bottom: 33px;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.form {
+}
+
+.form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form__label {
+  font-size: 11px;
+  font-weight: 400;
+  color: #9e9e9e;
+}
+
+.form__input {
+  width: 100%;
+  margin-top: 4px;
+  border-bottom: 1px solid #9e9e9e;
+  font-size: 16px;
+}
+
+.form__submit {
+  width: 100%;
+  margin-top: 30px;
+  padding: 14px;
+  background-color: #ffe600;
+  text-align: center;
+  font-size: 14px;
+}
+
+.forget-password {
+  display: inline-block;
+  width: 100%;
+  margin-top: 16px;
+  font-size: 11px;
+  color: #9e9e9e;
+  text-align: right;
+}
