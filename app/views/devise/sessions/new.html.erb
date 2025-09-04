@@ -1,20 +1,20 @@
 <div class="login-top-img">
-  <%= image_tag 'login-top', alt: 'Login Top' %>
+    <%= image_tag 'login-top.png', alt: 'Login Top' %>
 </div>
 
 <div class="inner">
-  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'form' }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'form' }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="field">
-      <%= f.label :email, class: 'form__label' %><br>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form__input' %>
-    </div>
+        <div class="field">
+            <%= f.label :email, class: 'form__label' %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form__input' %>
+        </div>
 
-    <div class="actions">
-      <%= f.submit "パスワード再設定用メールを送信する", class: 'form__submit' %>
-    </div>
-  <% end %>
+        <div class="actions">
+            <%= f.submit "パスワード再設定用メールを送信する", class: 'form__submit' %>
+        </div>
+    <% end %>
 
-  <%= render "devise/shared/links" %>
+    <%= render "devise/shared/links" %>
 </div>
