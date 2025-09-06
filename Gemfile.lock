@@ -135,6 +135,7 @@ GEM
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    htmlbeautifier (1.4.3)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.2.2)
@@ -200,7 +201,6 @@ GEM
     parser (3.3.9.0)
       ast (~> 2.4.1)
       racc
-    pg (1.6.1)
     pg (1.6.1-arm64-darwin)
     pp (0.6.2)
       prettyprint
@@ -344,7 +344,6 @@ GEM
     syntax_tree (6.3.0)
       prettier_print (>= 1.2.0)
     thor (1.4.0)
-    thruster (0.1.15)
     thruster (0.1.15-arm64-darwin)
     timeout (0.4.3)
     turbo-rails (2.0.16)
@@ -388,6 +387,7 @@ DEPENDENCIES
   devise
   devise-i18n-views
   foreman
+  htmlbeautifier
   importmap-rails
   jbuilder
   kamal

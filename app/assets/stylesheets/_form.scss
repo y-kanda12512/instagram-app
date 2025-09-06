@@ -36,6 +36,7 @@
     background-color: #ffe600;
     text-align: center;
     font-size: 14px;
+    cursor: pointer;
 }
 
 .forget-password {
@@ -45,4 +46,8 @@
     font-size: 11px;
     color: #9e9e9e;
     text-align: right;
+}
+
+.form__error {
+    color: red;
 }

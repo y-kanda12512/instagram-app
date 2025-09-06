@@ -1,16 +1,18 @@
-<h1>Profiles#new</h1>
-<%= form_with model: @profile, local: true do |f| %>
-  <div class="field">
-    <%= f.label :name, '名前' %>
-    <%= f.text_field :name %>
+<%= form_with model: @profile, url: profile_path, local: true, html: { multipart: true } do |f| %>
+  <div class="form__fields">
+    <div class="field">
+      <%= f.label :nickname, '名前', class: 'form__label' %><br />
+      <%= f.text_field :nickname, class: 'form__input' %>
+      <% @profile.errors.full_messages_for(:nickname).each do |msg| %>
+        <p class="form__error"><%= msg %></p>
+      <% end %>
+    </div>
+    <div class="field">
+      <%= f.label :profile_image, 'プロフィール画像' %><br />
+      <%= f.file_field :profile_image %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :email, 'メールアドレス' %>
-    <%= f.email_field :email %>
-  </div>
-
   <div class="actions">
-    <%= f.submit '保存' %>
+    <%= f.submit '保存', class: 'form__submit' %>
   </div>
 <% end %>
