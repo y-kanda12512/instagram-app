@@ -1,0 +1,16 @@
+<h1>Profiles#new</h1>
+<%= form_with model: @profile, local: true do |f| %>
+  <div class="field">
+    <%= f.label :name, '名前' %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, 'メールアドレス' %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit '保存' %>
+  </div>
+<% end %>
