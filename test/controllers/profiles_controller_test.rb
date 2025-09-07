@@ -1,29 +1,35 @@
 require "test_helper"
 
 class ProfilesControllerTest < ActionDispatch::IntegrationTest
-  test "should get new" do
-    get profile_new_url
-    assert_response :success
-  end
-
-  test "should get show" do
-    get profile_show_url
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get profile_edit_url
-    assert_response :success
-  end
-
-  test "should get update" do
-    get profile_update_url
-    assert_response :success
-  end
+  include Devise::Test::IntegrationHelpers  # ← Devise のサインイン用
 
   setup do
-    @user = users(:one)
+    @user = User.create!(email: "test@example.com", password: "password123")
     sign_in @user
-    @user.create_profile!(nickname: "Tester") # show/edit/update がプロフィール前提なら
+  end
+
+  test "GET new when no profile" do
+    @user.profile&.destroy
+    get new_profile_url
+    assert_response :success
+  end
+
+  test "GET show" do
+    @user.create_profile!(nickname: "Tester") unless @user.profile
+    get profile_url
+    assert_response :success
+  end
+
+  test "GET edit" do
+    @user.create_profile!(nickname: "Tester") unless @user.profile
+    get edit_profile_url
+    assert_response :success
+  end
+
+  test "PATCH update" do
+    @user.create_profile!(nickname: "Tester") unless @user.profile
+    patch profile_url, params: { profile: { nickname: "New Nick" } }
+    assert_redirected_to profile_url
+    assert_equal "New Nick", @user.reload.profile.nickname
   end
 end
