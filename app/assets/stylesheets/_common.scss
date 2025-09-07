@@ -1,13 +1,20 @@
 .inner {
-  padding-inline: 16px;
+    padding-inline: 16px;
 }
 
 .page-content {
-  padding-top: 44px;
-  padding-bottom: 68px;
+    padding-top: 44px;
+    padding-bottom: 68px;
 }
 
 .main-content {
-  max-width: 375px;
-  margin-inline: auto;
+    max-width: 375px;
+    margin-inline: auto;
+}
+
+.btn-logout {
+    display: inline-block;
+    width: fit-content;
+    padding: 20px;
+    background: yellow;
 }

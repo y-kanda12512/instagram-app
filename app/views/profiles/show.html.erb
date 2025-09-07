@@ -1,4 +1,3 @@
-<%# <div class="profile page-content"> %>
 <div class="inner">
   <div class="profile__head">
     <span class="profile__head-name">
@@ -10,6 +9,9 @@
       <%= image_tag @profile.profile_image, id: 'profileImage' %>
     <% else %>
       <%= image_tag 'default-profile.png', id: 'profileImage' %>
+    <% end %>
+    <%= form_with model: @profile, url: profile_path, method: :patch, local: true, html: { id: 'imageUploadForm' } do |f| %>
+      <%= f.file_field :profile_image, accept: 'image/*', id: 'imageUploadInput', data: { turbo: false }, style: 'display:none;' %>
     <% end %>
   </div>
   <div class="profile__body">
@@ -35,4 +37,3 @@
     </div>
   </div>
 </div>
-<%# </div> %>

@@ -28,6 +28,11 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    if @profile.update(profile_params)
+      redirect_to profile_path, notice: "プロフィール画像を更新しました"
+    else
+      render :show, status: :unprocessable_entity
+    end
   end
 
   def set_profile
