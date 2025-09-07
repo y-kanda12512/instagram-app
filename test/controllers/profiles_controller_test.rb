@@ -20,4 +20,10 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     get profiles_update_url
     assert_response :success
   end
+
+  setup do
+    @user = users(:one)
+    sign_in @user
+    @user.create_profile!(nickname: "Tester") # show/edit/update がプロフィール前提なら
+  end
 end
