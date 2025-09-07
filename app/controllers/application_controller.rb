@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
   # Devise Strong Parameters の拡張定義
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:account_name])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:account_name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [ :account_name ])
+    devise_parameter_sanitizer.permit(:account_update, keys: [ :account_name ])
   end
 end
