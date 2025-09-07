@@ -1,0 +1,39 @@
+<div class="inner">
+  <div class="profile__head">
+    <span class="profile__head-name">
+      <%= @account_name %>
+    </span>
+  </div>
+  <div class="profile__image">
+    <% if @profile&.profile_image&.attached? %>
+      <%= image_tag @profile.profile_image, id: 'profileImage' %>
+    <% else %>
+      <%= image_tag 'default-profile.png', id: 'profileImage' %>
+    <% end %>
+    <%= form_with model: @profile, url: profile_path, method: :patch, local: true, html: { id: 'imageUploadForm' } do |f| %>
+      <%= f.file_field :profile_image, accept: 'image/*', id: 'imageUploadInput', data: { turbo: false }, style: 'display:none;' %>
+    <% end %>
+  </div>
+  <div class="profile__body">
+    <div class="profile__counts">
+      <div class="count">
+        <div class="count__number">44</div>
+        <div class="count__text">Posts</div>
+      </div>
+      <div class="count">
+        <div class="count__number">110</div>
+        <div class="count__text">Followers</div>
+      </div>
+      <div class="count">
+        <div class="count__number">44</div>
+        <div class="count__text">Following</div>
+      </div>
+    </div>
+    <div class="profile__posts-content">
+      <div class="profile__posts-upper-row">
+      </div>
+      <div class="profile__posts-lower-tier">
+      </div>
+    </div>
+  </div>
+</div>

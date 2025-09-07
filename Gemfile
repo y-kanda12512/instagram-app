@@ -32,10 +32,11 @@ gem "kamal", require: false
 gem "thruster", require: false
 
 # --- ファイルのコメント ---
-# gem 'annotate'
+gem "annotate"
 
 group :development, :test do
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"
+  gem "htmlbeautifier"
 end
 
 group :development do

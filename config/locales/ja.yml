@@ -1,0 +1,5 @@
+ja:
+    activerecord:
+        attributes:
+            profile:
+                nickname: 名前
