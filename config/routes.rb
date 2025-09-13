@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  root "home#index"
-
+  resources :posts
   resource :profile, only: %i[new create show edit update]
 
   devise_scope :user do
