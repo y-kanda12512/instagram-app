@@ -1,11 +1,11 @@
 require "test_helper"
 
 class ProfilesControllerTest < ActionDispatch::IntegrationTest
-  include Devise::Test::IntegrationHelpers  # ← Devise のサインイン用
+  include Devise::Test::IntegrationHelpers
 
   setup do
-    @user = User.create!(email: "test@example.com", password: "password123")
-    sign_in @user
+    @user = users(:one)
+    sign_in(@user, scope: :user)
   end
 
   test "GET new when no profile" do

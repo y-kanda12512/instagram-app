@@ -1,38 +1,48 @@
+# test/controllers/posts_controller_test.rb
 require "test_helper"
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get posts_index_url
+  fixtures :users, :posts
+
+  setup do
+    sign_in users(:one)
+    @post = posts(:one)
+  end
+
+  test "GET index" do
+    get posts_url
     assert_response :success
   end
 
-  test "should get show" do
-    get posts_show_url
+  test "GET new" do
+    get new_post_url
     assert_response :success
   end
 
-  test "should get new" do
-    get posts_new_url
+  test "GET show" do
+    get post_url(@post)
     assert_response :success
   end
 
-  test "should get edit" do
-    get posts_edit_url
+  test "GET edit" do
+    get edit_post_url(@post)
     assert_response :success
   end
 
-  test "should get create" do
-    get posts_create_url
-    assert_response :success
+  test "POST create" do
+    assert_difference("Post.count", 1) do
+      post posts_url, params: { post: { caption: "hi" } }
+    end
+    assert_redirected_to post_url(Post.last)
   end
 
-  test "should get update" do
-    get posts_update_url
-    assert_response :success
+  test "PATCH update" do
+    patch post_url(@post), params: { post: { caption: "updated" } }
+    assert_redirected_to post_url(@post)
   end
 
-  test "should get destroy" do
-    get posts_destroy_url
-    assert_response :success
+  test "DELETE destroy" do
+    assert_difference("Post.count", -1) { delete post_url(@post) }
+    assert_redirected_to posts_url
   end
 end
