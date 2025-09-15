@@ -2,13 +2,18 @@
 require "test_helper"
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
-  fixtures :users, :posts
+  fixtures :users, :posts, :profiles
 
   setup do
     @user = users(:one)
     @user.create_profile!(nickname: "Test User") unless @user.profile
     sign_in @user
     @post = posts(:hello)
+    
+    # すべての投稿のユーザーにプロフィールが存在することを確認
+    Post.all.each do |post|
+      post.user.create_profile!(nickname: "User #{post.user.id}") unless post.user.profile
+    end
   end
 
   test "GET index" do
