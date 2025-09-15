@@ -9,7 +9,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     @user.create_profile!(nickname: "Test User") unless @user.profile
     sign_in @user
     @post = posts(:hello)
-    
+
     # すべての投稿のユーザーにプロフィールが存在することを確認
     Post.all.each do |post|
       post.user.create_profile!(nickname: "User #{post.user.id}") unless post.user.profile
