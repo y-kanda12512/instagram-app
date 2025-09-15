@@ -5,8 +5,10 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   fixtures :users, :posts
 
   setup do
-    sign_in users(:one)
-    @post = posts(:one)
+    @user = users(:one)
+    @user.create_profile!(nickname: "Test User") unless @user.profile
+    sign_in @user
+    @post = posts(:hello)
   end
 
   test "GET index" do
@@ -31,14 +33,14 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test "POST create" do
     assert_difference("Post.count", 1) do
-      post posts_url, params: { post: { caption: "hi" } }
+      post posts_url, params: { post: { content: "hi" } }
     end
-    assert_redirected_to post_url(Post.last)
+    assert_redirected_to profile_url
   end
 
   test "PATCH update" do
-    patch post_url(@post), params: { post: { caption: "updated" } }
-    assert_redirected_to post_url(@post)
+    patch post_url(@post), params: { post: { content: "updated" } }
+    assert_redirected_to profile_url
   end
 
   test "DELETE destroy" do

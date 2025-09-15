@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
+  before_action :set_post, only: %i[show edit update destroy]
 
   def index
     @posts = Post.all
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def new
@@ -17,13 +17,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    if @post = current_user.posts.build(post_params)
-      if @post.save
-        redirect_to profile_path, notice: "投稿が完了しました"
-      else
-        flash.now[:alert] = "入力内容を確認してください"
-        render :new, status: :unprocessable_entity
-      end
+    @post = current_user.posts.build(post_params)
+    if @post.save
+      redirect_to profile_path, notice: "投稿が完了しました"
+    else
+      flash.now[:alert] = "入力内容を確認してください"
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -38,10 +37,14 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to post_path, notice: "削除しました"
+    redirect_to posts_path, notice: "削除しました"
   end
 
   private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
   def post_params
     params.require(:post).permit(:content, post_images: [])

@@ -20,9 +20,9 @@
 # below each fixture, per the syntax in the comments below
 #
 hello:
-    user: alice
-    caption: "Hello world"
+    user: one
+    content: "Hello world"
 
 second:
-    user: bob
-    caption: "Second post"
+    user: two
+    content: "Second post"

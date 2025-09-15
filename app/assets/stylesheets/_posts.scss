@@ -26,8 +26,18 @@
 
 .post__head {
     display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.post__head-user-info {
+    display: flex;
     justify-content: flex-start;
     gap: 8px;
+}
+
+.post__edit-link {
+    color: #2f80ed;
 }
 
 .post__profile-image {
@@ -35,9 +45,6 @@
         width: 30px;
         height: 30px;
     }
-}
-
-.post__account-info {
 }
 
 .post__account-name {
