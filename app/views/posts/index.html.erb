@@ -11,14 +11,14 @@
           <%= link_to post_path(post) do %>
             <div class="post__head">
               <div class="post__profile-image">
-                <% if current_user.profile.profile_image.attached? %>
-                  <%= image_tag current_user.profile.profile_image %>
+                <% if post.user.profile.profile_image.attached? %>
+                  <%= image_tag post.user.profile.profile_image %>
                 <% else %>
                   <%= image_tag "default-profile.png", alt: "デフォルトプロフィール画像" %>
                 <% end %>
               </div>
               <div class="post__account-info">
-                <span class="post__account-name"><%= current_user.account_name %></span>
+                <span class="post__account-name"><%= post.user.profile.nickname %></span>
                 <span class="post__account-time">
                   <%= post.posting_hour %>
                 </span>

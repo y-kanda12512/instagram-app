@@ -33,7 +33,6 @@ document.addEventListener("turbo:load", function () {
     });
 
     // PostをクリックしたらフォームのSubmitが動作するようにする
-
     postLink.addEventListener("click", function () {
         formSubmit.click();
     });

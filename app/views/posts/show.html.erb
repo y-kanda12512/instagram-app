@@ -1,5 +1,5 @@
 <div class="post">
-  <div class="post__head">
+  <div class="post__head detail">
     <div class="post__head-user-info">
       <div class="post__profile-image">
         <% if @post.user.profile.profile_image.attached? %>
@@ -15,7 +15,9 @@
         </span>
       </div>
     </div>
-    <%= link_to	'編集', edit_post_path(@post), class:"post__edit-link" ,data: { turbo: false } %>
+    <% if user_signed_in? && @post.user_id == current_user.id %>
+      <%= link_to '編集', edit_post_path(@post), class: "post__edit-link", data: { turbo: false } %>
+    <% end %>
   </div>
   <div class="post__body">
     <div class="post__images">

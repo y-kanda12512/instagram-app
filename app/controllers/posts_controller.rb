@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :set_post, only: %i[show edit update destroy]
+  before_action :set_owned_post!, only: %i[edit update destroy]
 
   def index
     @posts = Post.all
@@ -44,6 +45,13 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def set_owned_post!
+    @post = Post.find(params[:id])
+    return if @post.user_id == current_user.id
+
+    redirect_to post_path(@post), alert: "権限がありません"
   end
 
   def post_params

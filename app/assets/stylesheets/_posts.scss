@@ -26,8 +26,12 @@
 
 .post__head {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 10px;
+
+    &.detail {
+        justify-content: space-between;
+    }
 }
 
 .post__head-user-info {
