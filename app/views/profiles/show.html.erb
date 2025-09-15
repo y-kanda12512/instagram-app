@@ -1,4 +1,4 @@
-<div class="inner">
+<div class="profile">
   <div class="profile__head">
     <span class="profile__head-name">
       <%= @account_name %>
@@ -30,10 +30,21 @@
       </div>
     </div>
     <div class="profile__posts-content">
-      <div class="profile__posts-upper-row">
-      </div>
-      <div class="profile__posts-lower-tier">
-      </div>
+      <% current_user.posts.each do |post| %>
+        <%= link_to post_path(post) do %>
+          <% if post.post_images.attached? %>
+            <%= image_tag post.post_images.first %>
+          <% else %>
+            <%= image_tag "no-image.png" %>
+          <% end %>
+          <%= post.content %>
+        <% end %>
+      <% end %>
+      <%# <div class="profile__posts-upper-row">
+
+      </div> %>
+      <%# <div class="profile__posts-lower-tier">
+      </div> %>
     </div>
   </div>
 </div>

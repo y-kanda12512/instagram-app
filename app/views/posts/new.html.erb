@@ -1,0 +1,28 @@
+<div class="add-post">
+  <div class="add-post__head">
+    <%= link_to "Cancel", posts_path, class: "add-post__head-link", data: { turbo: false } %>
+    <div class="add-post__title">Status</div>
+    <span id="js-post-link" class="add-post__head-link post-link-inactive">Post</span>
+  </div>
+  <div class="add-post__content">
+    <div class="add-post__profile">
+      <% if current_user.profile.profile_image.attached? %>
+        <%= image_tag current_user.profile.profile_image, class: "add-post__profile-image" %>
+      <% else %>
+        <%= image_tag "default-profile.png", alt: "デフォルトプロフィール画像", class: "add-post__profile-image" %>
+      <% end %>
+      <span class="add-post__profile"><%= current_user.profile.nickname %></span>
+    </div>
+    <div class="add-post__form">
+      <%= form_with model: @post, url: posts_path, local: true, html: { class: "post-form", multipart: true } do |f| %>
+        <div class="post-form__fields">
+          <%= f.text_field :content, placeholder: "What's on your mind ?", class: "post-form__input", id: "post_content"  %>
+          <%= f.label :post_images, "+ Album", class: "post-form__file-label" %>
+          <%= f.file_field :post_images, accept: "image/*", multiple: true, data: { turbo: false }, class: "post-form__file" %>
+        </div>
+        <div id="file-list" class="file-list"></div>
+        <%= f.submit "Submit", id: "js-form-submit", class: "post-form__submit" %>
+      <% end %>
+    </div>
+  </div>
+</div>

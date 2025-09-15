@@ -1,0 +1,66 @@
+<div class="post">
+  <div class="posts__head">
+    <%= link_to new_post_path, class: "posts__new-link", data: { turbo: false } do %>
+      <%= image_tag "photo-camera.png", alt: "カメラの画像" %>
+    <% end %>
+  </div>
+  <div class="posts__body">
+    <% if @posts.length > 0 %>
+      <% @posts.each do |post| %>
+        <div class="post post-show" data-post-id="<%= post.id %>">
+          <%= link_to post_path(post) do %>
+            <div class="post__head">
+              <div class="post__profile-image">
+                <% if post.user.profile.profile_image.attached? %>
+                  <%= image_tag post.user.profile.profile_image %>
+                <% else %>
+                  <%= image_tag "default-profile.png", alt: "デフォルトプロフィール画像" %>
+                <% end %>
+              </div>
+              <div class="post__account-info">
+                <span class="post__account-name"><%= post.user.profile.nickname %></span>
+                <span class="post__account-time">
+                  <%= post.posting_hour %>
+                </span>
+              </div>
+            </div>
+          <% end %>
+          <div class="post__body">
+            <div class="post__images">
+              <% if post.post_images.attached? %>
+                <% post.post_images.each do |post_image| %>
+                  <%= image_tag url_for(post_image), alt: "投稿画像", class: "post__image" %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="post__content">
+              <div class="post__tabs">
+                <div class="post__heart post__tab hidden active-heart" data-post-id="<%= post.id %>">
+                  <%= link_to post_like_path(post), data: { method: :delete } do %>
+                    <%= image_tag "active-heart.png" %>
+                  <% end %>
+                </div>
+                <div class="post__heart post__tab hidden inactive-heart" data-post-id="<%= post.id %>">
+                  <%= link_to post_like_path(post), data: { method: :post } do %>
+                    <%= image_tag "inactive-heart.png" %>
+                  <% end %>
+                </div>
+                <%= link_to "#", class: "post__tab" do %>
+                  <%= image_tag "comment-image.png" %>
+                <% end %>
+                <%= link_to "http://twitter.com/share?url=#{post_url(post)}&text=Twitterのシェアをするときの文章です", class: "post__tab", target: "_blank" do %>
+                  <%= image_tag "share-image.png" %>
+                <% end %>
+              </div>
+              <div class="post__info">
+                <div class="post__description"><%= post.content %></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>まだ投稿がありません</p>
+    <% end %>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_profile, only: %i[show edit update]
+  before_action :set_profile, only: %i[show update]
 
   def new
     if current_user.profile.present?
@@ -11,10 +11,10 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    unless current_user.profile
+      return redirect_to new_profile_path, alert: "プロフィールを作成してください"
+    end
     @account_name = current_user.account_name
-  end
-
-  def edit
   end
 
   def create
@@ -28,12 +28,17 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    unless current_user.profile
+      return redirect_to new_profile_path, alert: "プロフィールを作成してください"
+    end
     if @profile.update(profile_params)
       redirect_to profile_path, notice: "プロフィール画像を更新しました"
     else
       render :show, status: :unprocessable_entity
     end
   end
+
+  private
 
   def set_profile
     @profile = current_user.profile
