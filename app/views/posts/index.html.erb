@@ -32,8 +32,14 @@
             <div class="post__content">
               <div class="post__tabs">
                 <div class="post__heart post__tab hidden active-heart" data-post-id="<%= post.id %>">
+                  <%= link_to post_like_path(post), data: { method: :delete } do %>
+                    <%= image_tag "active-heart.png" %>
+                  <% end %>
                 </div>
                 <div class="post__heart post__tab hidden inactive-heart" data-post-id="<%= post.id %>">
+                  <%= link_to post_like_path(post), data: { method: :post } do %>
+                    <%= image_tag "inactive-heart.png" %>
+                  <% end %>
                 </div>
                 <%= link_to "#", class: "post__tab" do %>
                   <%= image_tag "comment-image.png" %>

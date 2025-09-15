@@ -16,6 +16,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many_attached :post_images
+  has_many :likes, dependent: :destroy
 
   def posting_hour(time = created_at)
     return "" unless time
